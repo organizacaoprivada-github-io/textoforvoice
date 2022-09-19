@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang=en><!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=csrf-token content=""><link rel=preconnect href=https://fonts.googleapis.com/><link rel=preconnect href=https://pagead2.googlesyndication.com/><title>Plans &amp; Pricing - VoiceMaker</title><meta name=Description content="Voice Maker provides Basic, Premium &amp; Audiobook Creation Pack plan, starting from free or $5 per month. In addition, we provide many more monthly packages. Explore now!"><link rel="shortcut icon" href=favicon.ico type=image/x-icon><link rel=icon href=favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=favicon-32x32.png><link rel=mask-icon href=safari-pinned-tab.svg color=#d1e9ff><link rel=manifest href=site.webmanifest><meta name=msapplication-TileColor content=#d1e9ff><meta name=theme-color content=#d1e9ff><link rel=stylesheet href=css/bootstrap.min6473.css?v23><link rel=stylesheet href=css/audioplayer.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/styles410f.css?v57><link rel=stylesheet href=css/new-ui6c7c.css?v55><link rel=stylesheet href=css/styles-dark6c7c.css?v55><link rel=stylesheet href=css/awselect.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/app2.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/multiple-select.min9e07.css?v50><script type=text/javascript>const loadFont = (url) => {
+            // the 'fetch' equivalent has caching issues
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET.html', url, true);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let css = xhr.responseText;
+                    css = css.replace(/}/g, 'font-display: swap; }');
+
+                    const head = document.getElementsByTagName('head')[0];
+                    const style = document.createElement('style');
+                    style.appendChild(document.createTextNode(css));
+                    head.appendChild(style);
+                }
+            };
+            xhr.send();
+        }
+
+        loadFont('https://fonts.googleapis.com/css?family=Roboto:regular,300,400,500,600,700&amp;display=swap');</script><script>const script = document. createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    // specifically this line below makes PageView get's properly triggered and fired
+    script.onload = () => { dataLayer.push({ event: 'gtm.js', 'gtm.start': (new Date()).getTime(), 'gtm.uniqueEventId': 0 }); }
+    script.src = '../www.googletagmanager.com/gtm67e3.js?id=GTM-W8GKC5M'
+
+    document.head.appendChild(script);</script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8GKC5M" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript><script src=js/jquery-3.6.0.min6473.js?v23></script><nav class="navbar navbar-expand-lg navbar-light shadow-custom"><input type=hidden class=user-dark-mode><div class="container pr-3 pl-3"><a href=index.html class=navbar-brand><img src=img/logo.svg alt="VoiceMaker Logo"> </a><button class="navbar-toggler collapsed" type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <input type=hidden id=limit><div class="collapse navbar-collapse" id=navbarNav><ul class="navbar-nav ml-auto flex-center flex-center-md-0"><li class=nav-item><a class=nav-link href=index.html>Home</a></li><li class=nav-item><a class=nav-link href=voice-samples.html>AI Voices</a></li><li class=nav-item><a class=nav-link href=pricing.html>Pricing</a></li><li class=nav-item><a class=nav-link href=contact.html>Contact</a></li><div class=login><button class="btn text-dark mr-3 ml-2" href=# data-toggle=modal data-target=#loginModal>Log in</button></div><div class=login><button class="btn mr-3" href=# data-toggle=modal data-target=#registerModal id=register>Register</button></div></ul></div></div></nav><script>const checkbox = document.getElementById('darkmode-onoffswitch');
+    
+        function updateDarkMode(darkMode) {
+            let data = { darkMode }
+            return $.ajax({
+                headers: {
+                    'CSRF-Token': token // <-- is the csrf token as a header
+                },
+                type: "PUT",
+                url: `/user/preferences`,
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                processData: false,
+                dataType: 'json',
+                cache: true,
+                timeout: 0,
+            })
+        }
+    
+        const ready = async () => {
+            const userId = $('#nav-user-id').val()
+            if (userId) {
+            } else {
+                setLightMode()
+            }
+        }
+    
+        document.addEventListener("DOMContentLoaded", ready);
+    
+        const setLightMode = async () => {
+            $('.navbar-brand').children('img').prop('src', 'img/logo.svg')
+            $('.footer-logo').children('img').prop('src', 'img/logo_footer.svg')
+            document.body.classList.remove('dark');
+            localStorage.setItem('darkMode', false)
+    
+            const headTag = document.getElementsByTagName('head')[0];
+            const styleTag = document.createElement("style");
+    
+            styleTag.innerHTML = `
+            :root {
+                color-scheme: normal;
+            }`;
+            
+            headTag.appendChild(styleTag);
+        }
+    
+        const setDarkMode = async () => {
+            $('.navbar-brand').children('img').prop('src', 'img/logo_white.svg')
+            $('.footer-logo').children('img').prop('src', 'img/logo_white.svg')
+            document.body.classList.add('dark')
+            localStorage.setItem('darkMode', true)
+    
+            const headTag = document.getElementsByTagName('head')[0];
+            const styleTag = document.createElement("style");
+    
+            styleTag.innerHTML = `
+            :root {
+                color-scheme: dark;
+            }`;
+    
+            headTag.appendChild(styleTag);
+        }
+    
+        $(document).on('click', '#navbarNav .dropdown-menu', function (e) {
+            e.stopPropagation()
+        })
+    
+        if (checkbox) {
+            checkbox.addEventListener('change', async function (e) {
+                e.stopPropagation()
+                if (document.body.classList.contains('dark')) {
+                    setLightMode()
+                    await updateDarkMode(false)
+                } else {
+                    setDarkMode()
+                    await updateDarkMode(true)
+                }
+            })
+        }</script><div class="modal auth-modal modal-main" id=loginModal tabindex=-1 role=dialog aria-labelledby=loginModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-centered" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class=modal-body><div class="card-body auth-form"><h1 class="mb-4 text-left">Login</h1><div class=social-auth><a href=https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Fgoogle%2Fcallback&amp;scope=profile%20email&amp;client_id=1042286646702-3s99b0ademt36ktf8flh61vpgimr0oel.apps.googleusercontent.com class="btn btn-b" type=button><img src=images/google-logo.png> Login with Google</a> <a href=https://www.facebook.com/v3.2/dialog/oauth?auth_type=rerequest&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;client_id=184774382859994 class="btn btn-b" type=button><i class="fab fa-facebook"></i> Login with Facebook</a> <a href=https://api.twitter.com/oauth/authenticate?oauth_token=duY6hgAAAAABE5ztAAABg1RksO8 class="btn btn-b" type=button><i class="fab fa-twitter"></i> Login with Twitter</a></div><hr class="hr-text mt-2" data-content=Or><form class=form role=form id=formLogin><div class=loginErrors></div><div class=form-group><input type=email class=form-control id=loginEmail required autocomplete=username placeholder=Email></div><div class=form-group><input type=password class=form-control id=loginPassword required autocomplete=current-password placeholder=Password></div><div class="form-row d-flex justify-content-between"><div class=form-group><div class="form-check ml-2"><input class=form-check-input type=checkbox id=basic_checkbox_1 checked><label class=form-check-label for=basic_checkbox_1>Remember me</label></div></div></div><button type=submit class="btn btn-auth login-modal-btn btn-block mt-2 mb-2" id=btnLogin>Login</button></form><div class="auth-form-p mt-2 text-center"><div class="form-group mt-4"><a href=# data-toggle=modal data-target=#forgotModal>Forgot password?</a></div><hr><p>Don't have an account? <a class=text-primary href=# data-toggle=modal data-target=#registerModal>Register</a></p></div></div></div></div></div></div><div class="modal modal-main" id=forgotModal tabindex=-1 role=dialog aria-labelledby=forgotModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-md" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class=modal-body><div class="card-body auth-form"><h1 class=mb-4>Forgot password?</h1><form class=form role=form id=formForgot><div class=forgotErrors></div><div class=form-group><input type=email class=form-control id=forgotEmail required autocomplete=email placeholder=Email></div><button type=submit class="btn btn-auth login-modal-btn btn-block mt-2 mb-2" id=btnForgot>Password Reset</button></form><div class="auth-form-p mt-4 text-center"><p><a class=text-primary href=# data-toggle=modal data-target=#loginModal><i class="fa fa fa-long-arrow-alt-left" aria-hidden=true></i> Back</a></p></div></div></div></div></div></div><div class="modal modal-main auth-modal signup-modal" id=registerModal tabindex=-1 role=dialog aria-labelledby=registerModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-centered" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class="modal-body register"><div class="row no-gutters"><div class="col-md-4 p-0 bg-image remove-bg"><img src=img/signup-check.svg height=100% class=img-fluid alt=""></div><div class="col-md-8 col-md"><div class=auth-form><h1 class="mb-4 text-left">Sign up</h1><div class=social-auth><a href=https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Fgoogle%2Fcallback&amp;scope=profile%20email&amp;client_id=1042286646702-3s99b0ademt36ktf8flh61vpgimr0oel.apps.googleusercontent.com class="btn btn-b" type=button><img src=images/google-logo.png> Login with Google</a> <a href=https://www.facebook.com/v3.2/dialog/oauth?auth_type=rerequest&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;client_id=184774382859994 class="btn btn-b" type=button><i class="fab fa-facebook"></i> Login with Facebook</a> <a href=https://api.twitter.com/oauth/authenticate?oauth_token=W0lAGQAAAAABE5ztAAABg1RktA0 class="btn btn-b" type=button><i class="fab fa-twitter"></i> Login with Twitter</a></div><hr class="hr-text mt-2" data-content=Or><form class=form role=form id=formSignup><div class=signupErrors></div><div class=row><div class=col-sm-6><div class=form-group><input type=text name=firstname class=form-control id=registerFirstName required autocomplete=fname placeholder="First Name"></div></div><div class=col-sm-6><div class=form-group><input type=text name=lastname class=form-control id=registerLastName required autocomplete=lname placeholder="Last Name"></div></div></div><div class=form-group><input type=email class=form-control id=registerEmail required autocomplete=email placeholder=Email></div><div class=form-group><input type=password class=form-control id=registerPassword required autocomplete=current-password placeholder=Password></div><button type=submit class="btn btn-auth signup-modal-btn btn-block" id=btnSignup>Register</button></form><div class="auth-form-p mt-4 text-center"><p>Already have an account? <a class=text-primary href=# data-toggle=modal data-target=#loginModal>Login</a></p></div></div></div></div></div></div></div></div><script src="../www.recaptcha.net/recaptcha/api86eb.js?render=6LdyG7YZAAAAAP_Qdm5J9FrhPpTZgkasrl4QyO3D"></script><section id=section><div class=container><div class="row no-gutters"><div id=outer-wrapper class=pricing-page><section class="plans section_con"><input type=hidden id=subscriptionOrder> <input type=hidden id=subUpgrade> <input type=hidden id=subPrice><div class=row><div class="col-12 text-center title"><h1 class=section_main_title>Plans & Pricing</h1><span>Choose the plan that suits you.</span><div class="buttons-con taeb-switch left text-center"><div class="taeb active" taeb-value=month taeb-direction=left>Monthly</div><div class=taeb taeb-value=year taeb-direction=right>Yearly</div><span>20% discount</span></div></div></div><div class=row><div class="col-xl-3 col-md-6 mb-5 free-plan-cont"><div class=header-2></div><div class=parent><h3 class=title>Free</h3><span class=title-description>For testing</span><div class=free-plan><h2 class=price>$0</h2><span class=price-description>Per month</span></div><button disabled type=button class=btn><span>Free to use</span></button> <span class=devider></span><ul><li>Upto 250 chars per convert</li><li>Limited converts <small class=text-muted>*</small></li><li>750+ Voices <i data-toggle=tooltip data-original-title="Excluding AI4 voices"><i class="fa fa-info-circle ml-1"></i></i></li><li>120+ Languages</li></ul><span class=devider></span><ul class=two><li>Support for YouTube Videos <i data-toggle=tooltip data-original-title="On Free plan, give us credit in your video description"><i class="fa fa-info-circle"></i></i></li><li>Personal use</li><li>Email Support</li></ul></div></div><div class="col-xl-3 col-md-6 mb-5 basic-plan-cont"><div class=header-2></div><div class=parent><h3 class=title>Basic</h3><span class=title-description>For beginners</span><div class=basic-plan><h2 class=price>$5</h2><span class=price-description>Per month</span></div><a type=button href=# data-toggle=modal data-target=#loginModal class=btn>Get started</a> <span class=devider></span><ul><li><b>Upto 3,000 chars per convert</b></li><li class=basic-chars><b><mark>250,000 characters per month</mark></b></li><li><b>750+ Voices </b><i data-toggle=tooltip data-original-title="Excluding AI4 voices"><i class="fa fa-info-circle ml-1"></i></i></li><li><b>120+ Languages</b></li></ul><span class=devider></span><ul class=two><li>Support SSML</li><li>Support for YouTube Videos</li><li>Personal & Commercial use</li><li>Email Support</li></ul></div></div><div class="col-xl-3 col-md-6 mb-5 most-popular-cont"><div class=header>Most Popular</div><div class="parent most-popular"><h3 class=title>Premium</h3><span class=title-description>For professionals</span><div class=premium-plan><h2 class=price><del>$15</del> $10</h2><span class=price-description>Per month</span></div><a type=button href=# data-toggle=modal data-target=#loginModal class=btn>Get started</a> <span class=devider></span><ul><li><b>Upto 3,000 chars per convert</b></li><li class=premium-chars><b><mark>500,000 characters per month</mark></b></li><li><b>800+ Voices </b><i data-toggle=tooltip data-original-title="Supports All voices including Premium, AI3 & AI4 voices."><i class="fa fa-info-circle ml-1"></i></i></li><li><b>130+ Languages</b></li></ul><span class=devider></span><ul class=two><li>Support SSML</li><li>Cloud Save (5GB)</li><li>File History</li><li>Multi-Voice Editor <small class=text-muted>(Coming soon)</small></li><li>Smart Editor <small class=text-muted>(Coming soon)</small></li><li>Support for YouTube Videos</li><li>Personal & Commercial use</li><li>Dedicated Support</li></ul></div></div><div class="col-xl-3 col-md-6 mb-5 business-plan-cont"><div class=header-2></div><div class=parent><h3 class=title>Business</h3><span class=title-description>For small team</span><div class=business-plan><h2 class=price><del>$30</del> $20</h2><span class=price-description>Per month</span></div><a type=button href=# data-toggle=modal data-target=#loginModal class=btn>Get started</a> <span class=devider></span><ul><li><b>Upto 10,000 chars per convert</b></li><li class=business-chars><b><mark>1 million characters per month<mark></mark></mark></b></li><li><b>800+ Voices </b><i data-toggle=tooltip data-original-title="Supports All voices including Premium, AI3 & AI4 voices."><i class="fa fa-info-circle ml-1"></i></i></li><li><b>130+ Languages</b></li></ul><span class=devider></span><ul class=two><li>Support SSML</li><li>Cloud Save (10GB)</li><li>File History</li><li>Multi-Voice Editor <small class=text-muted>(Coming soon)</small></li><li>Smart Editor <small class=text-muted>(Coming soon)</small></li><li>Support for YouTube Videos</li><li>Personal & Commercial use</li><li>Dedicated Support</li></ul></div></div></div></section><section class="audiobook section_con"><div class=row><div class=col-md-12><h1 class=section_main_title>Audiobook & Podcast Creation</h1><div class=parent><h3>Per Pack</h3><div class="row align-items-center"><div class=col-xl-5><ul><li>Upto 100,000 chars per convert</li><li>1,000,000 characters per year</li><li>800+ AI Voices ( Including Premium, AI3 & AI4)</li><li>130+ Languages</li><li>Cloud Save (10GB)</li></ul></div><div class=col-xl-4><ul><li>Supports SSML</li><li>SMART Editor Suite (Coming soon)</li><li>Personal & Commercial use</li><li>Support for YouTube Videos</li><li>Dedicated Support</li></ul></div><div class="col-md-3 align-self-center text-center"><h2><del style="color: #C4C4C4;;">50$</del> 25$</h2><span>Per year</span><br><a class=btn href=# data-toggle=modal data-target=#loginModal>Get started</a></div></div></div></div></div></section><section class="custom-brand section_con"><div class=row><div class=col-md-12><h1 class=section_main_title>Custom Voice Creation</h1><div class=parent><div class=row><div class=col-md-5><ul><li>Create/clone a new unique artificial voice using 2 hours of input voice data.</li><li>Based on Neural AI3 & AI5 voice cloning engine</li><li>Supports SSML tags</li><li>Supports Voice Styles & Voice Effects</li></ul></div><div class=col-md-4><ul><li>Supporting Formats: Wav (16-bit) & Mp3 (upto 320Kbps)</li><li>RESTful API for developers</li><li>Commercial use</li><li>Dedicated Support</li></ul></div><div class="col-md-3 align-self-center text-center"><a class=btn href=contact.html target=_blank>Contact Us</a></div></div></div></div></div></section><section class="api-platform section_con"><div class=row><div class=col-md-12><h1 class=section_main_title>Developer API Platform</h1><div class=parent><div class="row d-flex"><div class=col-md-5><ul><li>VoiceMaker API exposes our powerful text-to-speech engine, with a customizable voice speed, pitch, volume, pause, emphasis & voice effects</li><li>700+ Standard & Neural voices including Premium, AI3, AI4 Voices</li><li>Simple Pay-As-You-Go pricing model</li><li>Supporting Formats: Wav (16-bit) & Mp3 (upto 320Kbps)</li></ul></div><div class=col-md-4><ul><li>Personal & Commercial use</li><li>Dedicated Support</li></ul></div><div class="col-md-3 align-self-center text-center"><h2><del style="color: #C4C4C4;;">50$</del> 25$</h2><span>Per 1 million characters</span><br><a class=btn href=https://developer.voicemaker.in/ target=_blank>API Platform</a></div></div></div></div></div></section><section class="frequently-questions section_con"><div class=row><div class="col-12 text-center"><h1 class=section_main_title>Frequently Asked Questions</h1></div></div><div class="row justify-content-center"><div class="col-md-9 col-12"><div class=accordion id=accordionExample><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_1 aria-expanded=true aria-controls=collapse_1>How to get started?</button></h2></div><div id=collapse_1 class="collapse show" aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>You can use our free plan with 100 converts per week by registering, For full access to our features and voices buy our paid basic, premium and business plans respectively.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_2 aria-expanded=false aria-controls=collapse_2>Will my subscription auto-renew?</button></h2></div><div id=collapse_2 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>No. At this moment you need to re-activate your subscription every month manually.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_3 aria-expanded=false aria-controls=collapse_3>How can I cancel my subscription?</button></h2></div><div id=collapse_3 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>At this moment, we do not auto-renew any plans and your plan will expire at the end of the period, so we did not add a cancel button.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_13 aria-expanded=false aria-controls=collapse_13>Do you count characters based on Converts or Downloads?</button></h2></div><div id=collapse_13 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>Text characters are counted on Converts, not on downloads. Every time you click "Convert to Speech", we count the text characters.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_20 aria-expanded=false aria-controls=collapse_20>How many hours of TTS voiceovers, I can create with 500,000 text characters.</button></h2></div><div id=collapse_20 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>500,000 text characters are equivalent to 12 to 13 hours of text to speech audio generation.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_4 aria-expanded=false aria-controls=collapse_4>I want to upgrade my plan from Basic to Premium or Business plan?</button></h2></div><div id=collapse_4 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>For usage under 10,000 text characters and a change to premium or business plan within 48 hours, we automatically calculate and deduct the amount of your last plan (Basic plan) and give you that discount on your new plan (Premium or Business).</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_5 aria-expanded=false aria-controls=collapse_5>Do you really offer unlimited converts?</button></h2></div><div id=collapse_5 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>No, Offering a truly unlimited converts is impossible from a technological point of view. Convert text into realistic human-like speech takes a tremendous amount of CPU and GPU power to run AI models and output voices. So we have a limit of characters per month. For businesses and large creators we offer a custom enterprise plan.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_6 aria-expanded=false aria-controls=collapse_6>What to do If my subscription is over?</button></h2></div><div id=collapse_6 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>Visit the "Subscription" page in your profile menu to re-activate your subscription. You have to buy plans again, just like the first time.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_7 aria-expanded=false aria-controls=collapse_7>Can I get a refund?</button></h2></div><div id=collapse_7 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>If you are not satisfied with our platform, you can contact us within 5 days and usage under 10,000 text characters since your first payment. We will process it within one business day. No hard feelings, no questions asked.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_8 aria-expanded=false aria-controls=collapse_7>Who owns the copyright for text-to-speech audio ?</button></h2></div><div id=collapse_8 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>By subscribing to our Paid Plans, you own the full copyright of any voice speech created with VoiceMaker, forever.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_12 aria-expanded=false aria-controls=collapse_12>Can I use Voicemaker's text to speech voices for my YouTube videos?</button></h2></div><div id=collapse_12 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>Yes! You can use our voice audios for your YouTube videos.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_9 aria-expanded=false aria-controls=collapse_7>What languages do VoiceMaker support?</button></h2></div><div id=collapse_9 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>Currently we supports 130+ languages worldwide, such as English (US, UK, AU, IN, Welsh), Spanish (Castilian, Mexican, US), German, Dutch, Danish, French, India (Hindi, Gujarati, Bengali, Kannada, Malayalam, Tamil, Telgu), Italian, Icelandic, Japanese, Polish, Portuguese, Russian, Turkish, Welsh, Vietnamese, Korean, Norwegian, Portuguese, Brazilian, Romanian, Indonesian, Arabic, Mandarin Chinese & lots more. Please check our AI voices page for the details.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_10 aria-expanded=false aria-controls=collapse_7>What types of payment do you accept?</button></h2></div><div id=collapse_10 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>We accept all major cards such as VISA, Mastercard. Payments secured and powered by Stripe.com, PayPal & RazorPay (UPI, GPay, PhonePe & Bank Transfer) for Indian users.</div></div></div><div class=card><div class=card-header id=headingOne><h2 class=mb-0><button class="btn btn-b btn-link btn-block text-left collapsed" type=button data-toggle=collapse data-target=#collapse_11 aria-expanded=false aria-controls=collapse_7>Do you offer custom plans?</button></h2></div><div id=collapse_11 class=collapse aria-labelledby=headingOne data-parent=#accordionExample><div class=card-body>Yes, we can make a custom enterprise plan for you, please email to <a href="cdn-cgi/l/email-protection.html#40333530302f323400362f2923252d212b25326e292e"><span class="__cf_email__" data-cfemail="35464045455a474175435a5c565058545e50471b5c5b">[email&#160;protected]</span></a></div></div></div></div></div></div></section><section class="still-questions section_con"><div class=row><div class="col-12 text-center"><h1 class=section_main_title>Do you still have any questions?</h1></div></div><div class="row justify-content-center"><div class="col-md-9 col-12 text-center"><span>Feel free to <a href=contact.html>contact us</a> if you don't find the answer to your question in our FAQs.</span></div></div></section></div></div></div></section><script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>let toggleValue = 'month'
+
+   $(document).ready(() => {
+      renderPlansPrice()
+   })
+
+   $(function () {
+      var taeb = $(".taeb-switch");
+      taeb.find(".taeb").on("click", function () {
+         var $this = $(this);
+
+         if ($this.hasClass("active")) return;
+
+         var direction = $this.attr("taeb-direction");
+
+         taeb.removeClass("left right").addClass(direction);
+         taeb.find(".taeb.active").removeClass("active");
+         $this.addClass("active");
+         const value = $this.attr('taeb-value')
+         if (value === 'month') {
+            toggleValue = 'month'
+         } else {
+            toggleValue = 'year'
+         }
+         renderPlansPrice()
+      });
+   });
+
+
+   const handleUpgardeText = (plan, input, subU) => {
+       const order = Number($('#subscriptionOrder').val())
+
+       if (order > plan) {
+           return 'Get started'
+       } else if (order === plan) {
+           return 'Get started'
+       } else if (order < plan) {
+        if (subU) {
+           return 'Upgrade'
+        } else {
+            return 'Get started'
+        }
+       } else {
+           return 'Get started'
+       }
+   }
+
+
+   const renderPlansPrice = () => {
+       let htmlBasic, htmlPrem, htmlBus, htmlFree
+       const subUpgrade = Number($('#subUpgrade').val()) || null
+       const subPrice = Number($('#subPrice').val())
+       const hours = Math.round(subUpgrade / 60)
+       const minutes = subUpgrade % 60
+       const order = Number($('#subscriptionOrder').val())
+
+       if(subUpgrade) {
+           $('.special-offer').html(`Special offer for just <b>${hours}</b> hours and <b>${minutes}</b> minutes`)
+       }
+
+       if (toggleValue === 'month') {
+           htmlFree = `<h2 class="price">$0</h2><span class="price-description">Permanently valid</span>`
+           htmlBasic = `<h2 class="price">$5</h2><span class="price-description">Per month</span>`
+           htmlPrem = `<h2 class="price"><del>$15</del> ${subUpgrade && order < 3 && subPrice < 10 ? `<del>$10</del> $${10 - subPrice}` : "$10"}</h2><span class="price-description">Per month</span>`
+           htmlBus = `<h2 class="price"><del>$30</del> ${subUpgrade && order < 5 && subPrice < 20 ? `<del>$20</del> $${20 - subPrice}` : "$20"}</h2><span class="price-description">Per month</span>`
+           $('.basic-link').prop('href', '/user/checkout?type=basic&sub=month&action=subscribe').css('cursor', 'pointer')
+           $('.basic-link').html(handleUpgardeText(1, $('.basic-link'), subUpgrade ))
+           $('.premium-link').prop('href', '/user/checkout?type=premium&sub=month&action=subscribe').css('cursor', 'pointer')
+           $('.premium-link').html(handleUpgardeText(3, $('.premium-link'), subUpgrade ))
+           $('.business-link').prop('href', '/user/checkout?type=business&sub=month&action=subscribe').css('cursor', 'pointer')
+           $('.business-link').html(handleUpgardeText(5, $('.business-link'), subUpgrade ))
+
+           $('.basic-chars').html(`<b><mark>250,000 characters per month</mark></b>`)
+           $('.premium-chars').html(`<b><mark>500,000 characters per month</mark></b>`)
+           $('.business-chars').html(`<b><mark>1 million characters per month</mark></b>`)
+       } else {
+           htmlFree = `<h2 class="price">$0</h2><span class="price-description">Permanently valid</span>`
+           htmlBasic = `<h2 class="price">${subUpgrade && subPrice < 50 ? `<del>$50</del> $${50 - subPrice}` : "$50"}</h2><span class="price-description">Per year</span>`
+           htmlPrem = `<h2 class="price"><del>$150</del> ${subUpgrade && subPrice < 100 ? `<del>$100</del> $${100 - subPrice}` : "$100"}</h2><span class="price-description">Per year</span>`
+           htmlBus = `<h2 class="price"><del>$300</del> ${subUpgrade && subPrice < 200 ? `<del>$200</del> $${200 - subPrice}` : "$200"}</h2><span class="price-description">Per year</span>`
+           $('.basic-link').prop('href', '/user/checkout?type=basic&sub=year&action=subscribe').css('cursor', 'pointer')
+           $('.basic-link').html(handleUpgardeText(2, $('.basic-link'), subUpgrade ))
+           $('.premium-link').prop('href', '/user/checkout?type=premium&sub=year&action=subscribe').css('cursor', 'pointer')
+           $('.premium-link').html(handleUpgardeText(4, $('.premium-link'), subUpgrade ))
+           $('.business-link').prop('href', '/user/checkout?type=business&sub=year&action=subscribe').css('cursor', 'pointer')
+           $('.business-link').html(handleUpgardeText(6, $('.business-link'), subUpgrade ))
+
+           $('.basic-chars').html(`<b><mark>3 million characters per year</mark></b>`)
+           $('.premium-chars').html(`<b><mark>6 million characters per year</mark></b>`)
+           $('.business-chars').html(`<b><mark>12 million characters per year</mark></b>`)
+       }
+       $('.free-plan').html(htmlFree)
+       $('.basic-plan').html(htmlBasic)
+       $('.premium-plan').html(htmlPrem)
+       $('.business-plan').html(htmlBus)
+   }
+
+   $('#pricing-day').click(() => {
+      $('#registerModal').modal('show')
+      $('#registerModal').on('shown.bs.modal', function (e) {
+         $('#registerSubscription').val('day')
+      })
+
+   })
+
+   $('#pricing-month').click(() => {
+      $('#registerModal').modal('show')
+      $('#registerModal').on('shown.bs.modal', function (e) {
+         $('#registerSubscription').val('month')
+      })
+   })
+
+   $('#pricing-premium').click(() => {
+      $('#registerModal').modal('show')
+      $('#registerModal').on('shown.bs.modal', function (e) {
+         $('#registerSubscription').val('month')
+      })
+   })</script><footer class="footer section_con"><div class=container><div class=footer-con><div class=row><div class="col-md-6 col-sm-12"><a class="logo mb-4 footer-logo" href=#><img src=img/logo_footer.svg alt=""></a></div><div class=col-md-6><div class=row><div class="col-md-4 col-6 links"><ul><li><a href=https://developer.voicemaker.in/ target=_blank>Developer API</a></li><li><a href=changelog.html>Changelog <span data-toggle=tooltip data-original-title="August 21th, 2022"><span class="badge badge-success mr-1">v1.0.17</span></span></a></li><li><a rel=noreferrer href=https://status.voicemaker.in/ target=_blank>System Status</a></li></ul></div><div class="col-md-4 col-6 links"><ul><li><a href=https://help.voicemaker.in/how-to-use-voicemaker/ target=_blank>How to Use?</a></li><li><a href=https://help.voicemaker.in/ target=_blank>Help Center</a></li><li><a href=faq.html>FAQ</a></li></ul></div><div class="col-md-4 col-6 links"><ul><li><a href=contact.html>Contact Us</a></li><li><a href=privacy.html>Privacy Policy</a></li><li><a href=terms.html>Terms of Service</a></li></ul></div></div></div></div><div class=row><div class=col-md-12><div class="copyright-area mb-2"><div class=d-flex><div class=mr-auto>Page Role Media Pvt Ltd. All rights reserved, 2022.</div><div><span class=mr-1><a target=_blank rel=noreferrer href=https://www.facebook.com/voicemaker.in><span class="our-icon fab fa-facebook-f"></span></a> <a target=_blank rel=noreferrer href=https://twitter.com/voicemaker_in><span class="our-icon fab fa-twitter ml-2"></span></a> <a target=_blank rel=noreferrer href=https://www.linkedin.com/company/voicemakerin><span class="our-icon fab fa-linkedin-in ml-2"></span></a> <a target=_blank rel=noreferrer href=https://instagram.com/voicemaker.in><span class="our-icon fab fa-instagram ml-2"></span></a></span></div></div></div></div></div></div></div></footer><link rel=stylesheet href=css/fontawesome/css/all.min6473.css?v23 media=print onload='this.media="all"'><script src=js/audioplayer.min4b6d.js?v5></script><script src=js/popper.min6473.js?v23></script><script src=js/bootstrap.min.js></script><script src=js/undoRedo.js></script><script src=js/mixed.js></script><script src=js/custom.fulld591.js?v65></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"74d02f3e5ca6278e","token":"61adb3f7673741d392fff4dbb7befb7f","version":"2022.8.1","si":100}' crossorigin="anonymous"></script>
+</body></html>

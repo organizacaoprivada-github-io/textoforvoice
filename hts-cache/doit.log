@@ -1,0 +1,8 @@
+-qwC2%P%s%uN0%I0H0%kf2A25000%f#f -F "" -%F "" -%l "pt_BR, en, *" -%X https://voicemaker.in/ https://voicemaker.in/ -O1 "C:\Users\NetMil\Desktop\site-me\z" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +https://voicemaker.in/
+File generated automatically on Mon, 19 Sep 2022 03:14:56, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

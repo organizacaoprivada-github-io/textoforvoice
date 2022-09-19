@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang=en><!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=csrf-token content=""><link rel=preconnect href=https://fonts.googleapis.com/><link rel=preconnect href=https://pagead2.googlesyndication.com/><title>Voicemaker - Text to Speech Converter</title><meta name=Description content="Online Text to Speech converts text into very human like natural sounding AI voices. You can download your voices in MP3, WAV audio format. We have 800+ AI Voices in 130 languages around the world."><link rel="shortcut icon" href=favicon.ico type=image/x-icon><link rel=icon href=favicon.ico type=image/x-icon><link rel=apple-touch-icon sizes=180x180 href=apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=favicon-32x32.png><link rel=mask-icon href=safari-pinned-tab.svg color=#d1e9ff><link rel=manifest href=site.webmanifest><meta name=msapplication-TileColor content=#d1e9ff><meta name=theme-color content=#d1e9ff><link rel=stylesheet href=css/bootstrap.min6473.css?v23><link rel=stylesheet href=css/audioplayer.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/styles410f.css?v57><link rel=stylesheet href=css/new-ui6c7c.css?v55><link rel=stylesheet href=css/styles-dark6c7c.css?v55><link rel=stylesheet href=css/awselect.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/app2.min.css media=print onload='this.media="all"'><link rel=stylesheet href=css/multiple-select.min9e07.css?v50><script type=text/javascript>const loadFont = (url) => {
+            // the 'fetch' equivalent has caching issues
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET.html', url, true);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let css = xhr.responseText;
+                    css = css.replace(/}/g, 'font-display: swap; }');
+
+                    const head = document.getElementsByTagName('head')[0];
+                    const style = document.createElement('style');
+                    style.appendChild(document.createTextNode(css));
+                    head.appendChild(style);
+                }
+            };
+            xhr.send();
+        }
+
+        loadFont('https://fonts.googleapis.com/css?family=Roboto:regular,300,400,500,600,700&amp;display=swap');</script><script>const script = document. createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    // specifically this line below makes PageView get's properly triggered and fired
+    script.onload = () => { dataLayer.push({ event: 'gtm.js', 'gtm.start': (new Date()).getTime(), 'gtm.uniqueEventId': 0 }); }
+    script.src = '../www.googletagmanager.com/gtm67e3.js?id=GTM-W8GKC5M'
+
+    document.head.appendChild(script);</script></head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8GKC5M" height=0 width=0 style=display:none;visibility:hidden></iframe></noscript><script src=js/jquery-3.6.0.min6473.js?v23></script><nav class="navbar navbar-expand-lg navbar-light shadow-custom"><input type=hidden class=user-dark-mode><div class="container pr-3 pl-3"><a href=index.html class=navbar-brand><img src=img/logo.svg alt="VoiceMaker Logo"> </a><button class="navbar-toggler collapsed" type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation"><span class=navbar-toggler-icon></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <input type=hidden id=limit value=250><div class="collapse navbar-collapse" id=navbarNav><ul class="navbar-nav ml-auto flex-center flex-center-md-0"><li class=nav-item><a class=nav-link href=index.html>Home</a></li><li class=nav-item><a class=nav-link href=voice-samples.html>AI Voices</a></li><li class=nav-item><a class=nav-link href=pricing.html>Pricing</a></li><li class=nav-item><a class=nav-link href=contact.html>Contact</a></li><div class=login><button class="btn text-dark mr-3 ml-2" href=# data-toggle=modal data-target=#loginModal>Log in</button></div><div class=login><button class="btn mr-3" href=# data-toggle=modal data-target=#registerModal id=register>Register</button></div></ul></div></div></nav><script>const checkbox = document.getElementById('darkmode-onoffswitch');
+    
+        function updateDarkMode(darkMode) {
+            let data = { darkMode }
+            return $.ajax({
+                headers: {
+                    'CSRF-Token': token // <-- is the csrf token as a header
+                },
+                type: "PUT",
+                url: `/user/preferences`,
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                processData: false,
+                dataType: 'json',
+                cache: true,
+                timeout: 0,
+            })
+        }
+    
+        const ready = async () => {
+            const userId = $('#nav-user-id').val()
+            if (userId) {
+            } else {
+                setLightMode()
+            }
+        }
+    
+        document.addEventListener("DOMContentLoaded", ready);
+    
+        const setLightMode = async () => {
+            $('.navbar-brand').children('img').prop('src', 'img/logo.svg')
+            $('.footer-logo').children('img').prop('src', 'img/logo_footer.svg')
+            document.body.classList.remove('dark');
+            localStorage.setItem('darkMode', false)
+    
+            const headTag = document.getElementsByTagName('head')[0];
+            const styleTag = document.createElement("style");
+    
+            styleTag.innerHTML = `
+            :root {
+                color-scheme: normal;
+            }`;
+            
+            headTag.appendChild(styleTag);
+        }
+    
+        const setDarkMode = async () => {
+            $('.navbar-brand').children('img').prop('src', 'img/logo_white.svg')
+            $('.footer-logo').children('img').prop('src', 'img/logo_white.svg')
+            document.body.classList.add('dark')
+            localStorage.setItem('darkMode', true)
+    
+            const headTag = document.getElementsByTagName('head')[0];
+            const styleTag = document.createElement("style");
+    
+            styleTag.innerHTML = `
+            :root {
+                color-scheme: dark;
+            }`;
+    
+            headTag.appendChild(styleTag);
+        }
+    
+        $(document).on('click', '#navbarNav .dropdown-menu', function (e) {
+            e.stopPropagation()
+        })
+    
+        if (checkbox) {
+            checkbox.addEventListener('change', async function (e) {
+                e.stopPropagation()
+                if (document.body.classList.contains('dark')) {
+                    setLightMode()
+                    await updateDarkMode(false)
+                } else {
+                    setDarkMode()
+                    await updateDarkMode(true)
+                }
+            })
+        }</script><div class="modal auth-modal modal-main" id=loginModal tabindex=-1 role=dialog aria-labelledby=loginModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-centered" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class=modal-body><div class="card-body auth-form"><h1 class="mb-4 text-left">Login</h1><div class=social-auth><a href=https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Fgoogle%2Fcallback&amp;scope=profile%20email&amp;client_id=1042286646702-3s99b0ademt36ktf8flh61vpgimr0oel.apps.googleusercontent.com class="btn btn-b" type=button><img src=images/google-logo.png> Login with Google</a> <a href=https://www.facebook.com/v3.2/dialog/oauth?auth_type=rerequest&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;client_id=184774382859994 class="btn btn-b" type=button><i class="fab fa-facebook"></i> Login with Facebook</a> <a href=https://api.twitter.com/oauth/authenticate?oauth_token=bue4GgAAAAABE5ztAAABg1RiyZQ class="btn btn-b" type=button><i class="fab fa-twitter"></i> Login with Twitter</a></div><hr class="hr-text mt-2" data-content=Or><form class=form role=form id=formLogin><div class=loginErrors></div><div class=form-group><input type=email class=form-control id=loginEmail required autocomplete=username placeholder=Email></div><div class=form-group><input type=password class=form-control id=loginPassword required autocomplete=current-password placeholder=Password></div><div class="form-row d-flex justify-content-between"><div class=form-group><div class="form-check ml-2"><input class=form-check-input type=checkbox id=basic_checkbox_1 checked><label class=form-check-label for=basic_checkbox_1>Remember me</label></div></div></div><button type=submit class="btn btn-auth login-modal-btn btn-block mt-2 mb-2" id=btnLogin>Login</button></form><div class="auth-form-p mt-2 text-center"><div class="form-group mt-4"><a href=# data-toggle=modal data-target=#forgotModal>Forgot password?</a></div><hr><p>Don't have an account? <a class=text-primary href=# data-toggle=modal data-target=#registerModal>Register</a></p></div></div></div></div></div></div><div class="modal modal-main" id=forgotModal tabindex=-1 role=dialog aria-labelledby=forgotModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-md" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class=modal-body><div class="card-body auth-form"><h1 class=mb-4>Forgot password?</h1><form class=form role=form id=formForgot><div class=forgotErrors></div><div class=form-group><input type=email class=form-control id=forgotEmail required autocomplete=email placeholder=Email></div><button type=submit class="btn btn-auth login-modal-btn btn-block mt-2 mb-2" id=btnForgot>Password Reset</button></form><div class="auth-form-p mt-4 text-center"><p><a class=text-primary href=# data-toggle=modal data-target=#loginModal><i class="fa fa fa-long-arrow-alt-left" aria-hidden=true></i> Back</a></p></div></div></div></div></div></div><div class="modal modal-main auth-modal signup-modal" id=registerModal tabindex=-1 role=dialog aria-labelledby=registerModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-centered" role=document><div class=modal-content><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button><div class="modal-body register"><div class="row no-gutters"><div class="col-md-4 p-0 bg-image remove-bg"><img src=img/signup-check.svg height=100% class=img-fluid alt=""></div><div class="col-md-8 col-md"><div class=auth-form><h1 class="mb-4 text-left">Sign up</h1><div class=social-auth><a href=https://accounts.google.com/o/oauth2/v2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Fgoogle%2Fcallback&amp;scope=profile%20email&amp;client_id=1042286646702-3s99b0ademt36ktf8flh61vpgimr0oel.apps.googleusercontent.com class="btn btn-b" type=button><img src=images/google-logo.png> Login with Google</a> <a href=https://www.facebook.com/v3.2/dialog/oauth?auth_type=rerequest&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fvoicemaker.in%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;client_id=184774382859994 class="btn btn-b" type=button><i class="fab fa-facebook"></i> Login with Facebook</a> <a href=https://api.twitter.com/oauth/authenticate?oauth_token=ZBWdtQAAAAABE5ztAAABg1RizZc class="btn btn-b" type=button><i class="fab fa-twitter"></i> Login with Twitter</a></div><hr class="hr-text mt-2" data-content=Or><form class=form role=form id=formSignup><div class=signupErrors></div><div class=row><div class=col-sm-6><div class=form-group><input type=text name=firstname class=form-control id=registerFirstName required autocomplete=fname placeholder="First Name"></div></div><div class=col-sm-6><div class=form-group><input type=text name=lastname class=form-control id=registerLastName required autocomplete=lname placeholder="Last Name"></div></div></div><div class=form-group><input type=email class=form-control id=registerEmail required autocomplete=email placeholder=Email></div><div class=form-group><input type=password class=form-control id=registerPassword required autocomplete=current-password placeholder=Password></div><button type=submit class="btn btn-auth signup-modal-btn btn-block" id=btnSignup>Register</button></form><div class="auth-form-p mt-4 text-center"><p>Already have an account? <a class=text-primary href=# data-toggle=modal data-target=#loginModal>Login</a></p></div></div></div></div></div></div></div></div><script src="../www.recaptcha.net/recaptcha/api86eb.js?render=6LdyG7YZAAAAAP_Qdm5J9FrhPpTZgkasrl4QyO3D"></script><div class="modal modal-2" id=editorModal tabindex=-1 role=dialog aria-labelledby=editor_settingsModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-xl" role=document><div class=modal-content><div class=modal-header><h5 class=modal-title>Settings</h5><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button></div><input type=hidden id=languages><div class=modal-body><div class="card-body editor_settingsForm mb-3"><div class=row><div class=col-md-3><div class="nav flex-column nav-pills me-3 settings" id=editorTabs role=tablist aria-orientation=vertical><a class="nav-link active" id=editor-tabs-general-tab data-bs-toggle=pill href=#editor-tabs-general role=tab aria-controls=editor-tabs-general aria-selected=true>General</a> <a class=nav-link id=editor-tabs-language-tab data-bs-toggle=pill href=#editor-tabs-language role=tab aria-controls=editor-tabs-language aria-selected=false>Language & regions</a> <a class=nav-link id=editor-tabs-pauses-tab data-bs-toggle=pill href=#editor-tabs-pauses role=tab aria-controls=editor-tabs-pauses aria-selected=false>Pauses</a></div><div class="d-block d-md-none mt-2 mb-4"><hr></div></div><div class=col-md-9><div class=tab-content id=editorTabsContent><div class="tab-pane fade show active" id=editor-tabs-general role=tabpanel aria-labelledby=editor-tabs-general-tab><div class=row><div class=col-8><h5 class=m-0>Slider</h5><small>Enable slider on pause, pitch, speed textarea buttons.</small></div><div class=col-4><div class=float-right><div class=onoffswitch><input type=checkbox name=onoffswitch class=onoffswitch-checkbox id=slider-onoffswitch tabindex=0><label class=onoffswitch-label for=slider-onoffswitch><span class=onoffswitch-inner></span> <span class=onoffswitch-switch></span></label></div></div></div></div></div><div class="tab-pane fade" id=editor-tabs-language role=tabpanel aria-labelledby=editor-tabs-language-tab><div class=col-md-12><p class=text-primary>Language & regions feature is supported on paid plans.</p></div></div><div class="tab-pane fade" id=editor-tabs-pauses role=tabpanel aria-labelledby=editor-tabs-pauses-tab><div class=col-md-12><p class=text-primary>Custom Pause Setting supports on Premium, Business and Audiobook plans.</p></div></div></div></div></div></div></div></div></div></div><script>$('#editorTabs a').on('click', function (event) {
+        event.preventDefault()
+        $(this).tab('show')
+    })
+
+    $(document).ready(() => {
+        $('input[type="number"]').attr({
+            max: 10,
+            min: 0
+        })
+    })
+
+    let editor_multi_select = $('.editor-multi-select')
+    let languages
+    if ($('#languages').val()) {
+        languages = JSON.parse($('#languages').val())
+    }
+    let getLanguages
+
+    $('#editorModal').on('show.bs.modal', () => {
+        if (!getLanguages) getEditorLanguages()
+    })
+
+    const getEditorLanguages = () => {
+        $.ajax({
+            type: "GET",
+            url: `/user/language`,
+            processData: false,
+            dataType: 'json',
+            success: (data) => {
+                if (data?.success === true) {
+                    getLanguages = true
+                    $('.editor-multi-select').attr('multiple', 'multiple')
+                    $('.editor-multi-select').attr('disabled', false)
+                    let allLanguages = []
+                    if (data?.data?.length > 0) {
+                        data?.data?.forEach(lan => {
+                            allLanguages?.push({
+                                text: lan?.name,
+                                value: lan?.value
+                            })
+                        })
+                        editor_multi_select.multipleSelect({
+                            placeholder: "Select language",
+                            data: allLanguages
+                        })
+                        if (languages && languages?.length > 0) {
+                            editor_multi_select.multipleSelect('setSelects', languages?.map(lang => { return lang?.value }))
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    $('#slider-onoffswitch').on('change', function () {
+        const checked = $(this).is(':checked')
+
+        $.ajax({
+            type: "PUT",
+            url: "/user/preferences",
+            data: JSON.stringify({ slider: checked }),
+            contentType: 'application/json',
+            processData: false,
+            dataType: 'json',
+            success: (data) => {
+                $.notify(` Settings Updated Successfully`, { type: "success", icon: "check" });
+                if (checked === true) {
+                    $('.audiobook-sliders').show()
+                    $('.audiobook-nonslider').hide()
+                } else {
+                    $('.audiobook-sliders').hide()
+                    $('.audiobook-nonslider').show()
+                }
+            }
+        })
+    })
+
+    const handlePausesListDisplay = (list) => {
+        const { comma, dash, question, exclamation, period, betweenParagraphs } = list
+
+        $('#pause-comma').prop('checked', comma?.checked ? 'true' : '')
+        $('#pause-comma').val(comma.value)
+
+        $('#pause-question').prop('checked', question?.checked ? 'true' : '')
+        $('#pause-question').val(question.value)
+
+        $('#pause-exclamation').prop('checked', exclamation?.checked ? 'true' : '')
+        $('#pause-exclamation').val(exclamation.value)
+
+        $('#pause-period').prop('checked', period?.checked ? 'true' : '')
+        $('#pause-period').val(period.value)
+
+        $('#pause-between-paragraphs').prop('checked', betweenParagraphs?.checked ? 'true' : '')
+        $('#pause-between-paragraphs').val(betweenParagraphs.value)
+    }
+
+    $('#pause-onoffswitch').on('change', function () {
+        const checked = $(this).is(':checked')
+        if (checked === true) $('.pauses-list').fadeIn()
+        if (checked === false) $('.pauses-list').fadeOut()
+
+        $.ajax({
+            type: "PUT",
+            url: "/user/preferences",
+            data: JSON.stringify({ pauses: checked }),
+            contentType: 'application/json',
+            processData: false,
+            dataType: 'json',
+            success: (data) => {
+                const pausesList = data?.pausesList
+                if(checked) {
+                    if (pausesList){
+                        handlePausesListDisplay(pausesList)
+                    }
+                }
+                $.notify(` Settings Updated Successfully`, { type: "success", icon: "check" });
+            }
+        })
+    })
+
+    // $('input[type="number"]').on('input', (e) => {
+    //     if(Number(e.target.value) > 20) {
+    //         e.preventDefault()
+    //         return $.notify(" value can't be more than 20", { type: "danger", icon: "warning" });
+    //     }
+    // })
+
+    const pausesChecked = $('#pause-onoffswitch').is(':checked')
+    if(!pausesChecked) $('.pauses-list').fadeOut()
+
+    $('.update-pauses').on('click', () => {
+        const comma = $('#pause-comma').is(':checked')
+        const commaValue = $('#pause-comma-v').val()
+        const question = $('#pause-question').is(':checked')
+        const questionValue = $('#pause-question-v').val()
+        const exclamation = $('#pause-exclamation').is(':checked')
+        const exclamationValue = $('#pause-exclamation-v').val()
+        const period = $('#pause-period').is(':checked')
+        const periodValue = $('#pause-period-v').val()
+        const betweenParagraphs = $('#pause-between-paragraphs').is(':checked')
+        const betweenParagraphsValue = $('#pause-between-paragraphs-v').val()
+
+        if (commaValue > 10 ||
+            questionValue > 10 ||
+            exclamationValue > 10 ||
+            periodValue > 10 ||
+            betweenParagraphsValue > 10) {
+                return $.notify("Pause settings value should be between 0 to 10 seconds.", { type: "danger", icon: "warning" });
+        }
+
+        let pausesList = {
+            comma: {
+                checked: comma,
+                value: commaValue
+            },
+            question: {
+                checked: question,
+                value: questionValue
+            },
+            exclamation: {
+                checked: exclamation,
+                value: exclamationValue
+            },
+            period: {
+                checked: period,
+                value: periodValue
+            },
+            betweenParagraphs: {
+                checked: betweenParagraphs,
+                value: betweenParagraphsValue
+            }
+        }
+
+        $.ajax({
+            type: "PUT",
+            url: "/user/preferences",
+            data: JSON.stringify({ pausesList }),
+            contentType: 'application/json',
+            processData: false,
+            dataType: 'json',
+            success: (data) => {
+                if (data?.success) {
+                    $.notify(` ${data.message} `, { type: "success", icon: "check" });
+                } else {
+                    $.notify(` ${data.message} `, { type: "danger", icon: "warning" });
+                }
+            }
+        })
+    })
+
+    $('#save-favorite-language').on('click', function () {
+        const languagesValues = editor_multi_select.multipleSelect('getSelects')
+        let languages = []
+
+        languagesValues?.map((value, i) => {
+            languages?.push(value)
+        })
+
+        $.ajax({
+            type: "PUT",
+            url: "/user/preferences",
+            data: JSON.stringify({ language: languages }),
+            contentType: 'application/json',
+            processData: false,
+            dataType: 'json',
+            success: async (data) => {
+                const { languages, selected } = await handlePageReady()
+                change_voice_callback_neural(selected[0]?.value || languages[0]?.value)
+                $.notify(` Settings Updated Successfully`, { type: "success", icon: "check" });
+            }
+        })
+    })</script><div class="modal modal-2" id=voiceProfileModal tabindex=-1 role=dialog aria-labelledby=voiceProfileModalLabel aria-hidden=true><div class="modal-dialog modal-dialog-lg" role=document><div class=modal-content><div class=modal-header><h5 class=modal-title>Voice Profile</h5><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button></div><div class=modal-body><div class="card-body mb-5"><p class=text-primary>Voice Profile Save feature is supported on paid plans.</p></div></div></div></div></div><section id=section><div class=container><div class="row no-gutters"><div id=outer-wrapper class=pt-0><form id=standard-synthesis><div id=textarea-outer-wrapper><div id=textarea-box><div class="d-flex align-items-center justify-content-between"><ul class="nav nav-tabs" id=myTab role=tablist><li class=nav-item><a class="nav-link active" id=text-tab data-toggle=tab href=#text role=tab aria-controls=text aria-selected=true>TEXT</a></li></ul><div class="btn-group mr-2 mb-2"><i class="fas fa-save fa-lg mr-4" style="cursor: pointer" data-toggle=modal data-target=#voiceProfileModal title="Voice Profile"></i> <i class="fas fa-cog fa-lg" style="cursor: pointer" data-toggle=modal data-target=#editor_settingsModal title="Enable slider on pause, pitch, speed textarea buttons and set Favorite Language & Regions."></i></div></div><div class="tab-content mt-3" id=myTabContent><div class="tab-pane fade show active" id=text role=tabpanel aria-labelledby=text-tab><div class="editor-box align-items-center"><div class="btn-group mr-3 mt-1"><button id=main-undo type=button class="btn btn-undo text-muted mb-2"><i class="fas fa-undo"></i></button> <button id=main-redo type=button class="btn btn-undo text-muted mb-2"><i class="fas fa-redo"></i></button></div><div class="btn-group mr-2 mb-2" id=editor_effect><button class="btn dropdown-toggle" type=button id=dropdownMenu8 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words at textarea" aria-haspopup=true aria-expanded=false><span class=english>Voice Effect</span></button><div class="dropdown-menu scrollable-menu" aria-labelledby=dropdownMenu8><button class=dropdown-item type=button id=breathing_effect>Breathing</button> <button class=dropdown-item type=button id=softer_effect>Soft</button> <button class=dropdown-item type=button id=whispered_effect>Whispered</button> <button style=display:none; class=dropdown-item type=button id=conversational_effect>Conversational</button> <button style=display:none; class=dropdown-item type=button id=news_effect>Newscaster</button> <button style=display:none; class=dropdown-item type=button id=happy_effect>Happy</button> <button style=display:none; class=dropdown-item type=button id=support_effect>Customer Support</button> <button style=display:none; class=dropdown-item type=button id=digital_effect>Digital Assistant</button> <button style=display:none; class=dropdown-item type=button id=empathic_effect>Empathic</button> <button style=display:none; class=dropdown-item type=button id=calm_effect>Calm</button> <button style=display:none; class=dropdown-item type=button id=sad_effect>Sad</button> <button style=display:none; class=dropdown-item type=button id=angry_effect>Angry</button> <button style=display:none; class=dropdown-item type=button id=fearful_effect>Fearful</button> <button style=display:none; class=dropdown-item type=button id=serious_effect>Serious</button> <button style=display:none; class=dropdown-item type=button id=embarrassed_effect>Embarrassed</button> <button style=display:none; class=dropdown-item type=button id=gentle_effect>Gentle</button> <button style=display:none; class=dropdown-item type=button id=excited_effect>Excited</button> <button style=display:none; class=dropdown-item type=button id=friendly_effect>Friendly</button> <button style=display:none; class=dropdown-item type=button id=hopeful_effect>Hopeful</button> <button style=display:none; class=dropdown-item type=button id=shouting_effect>Shouting</button> <button style=display:none; class=dropdown-item type=button id=feared_effect>Feared</button> <button style=display:none; class=dropdown-item type=button id=terrified_effect>Terrified</button> <button style=display:none; class=dropdown-item type=button id=unfriendly_effect>Unfriendly</button></div></div><div class="btn-group mr-2 mb-2"><div class=audiobook-nonslider><button class="btn dropdown-toggle" type=button id=dropdownMenu data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Insert pause on cursor place" aria-haspopup=true aria-expanded=false><span class=english>Pauses</span></button><div class=dropdown-menu aria-labelledby=dropdownMenu><button class=dropdown-item type=button id=half_pause>0.5s</button> <button class=dropdown-item type=button id=one_pause>1s</button> <button class=dropdown-item type=button id=two_pause>2s</button> <button class=dropdown-item type=button id=three_pause>3s</button> <button class=dropdown-item type=button id=four_pause>4s</button> <button class=dropdown-item type=button id=five_pause>5s</button> <button class=dropdown-item type=button id=six_pause>6s</button></div></div><div class=audiobook-sliders><button class="btn dropdown-toggle" id=pause-btn type=button><span class=english>Pauses</span></button><div class=pauses-dropdown><h6>Pause</h6><input type=text class=form-control id=ion_pause placeholder=Pause> <button type=button class="btn btn-primary btn-sm mt-3 submit">Submit</button> <button type=button class="btn btn-cancel btn-sm mt-3 cancel">Cancel</button></div></div></div><div class="btn-group mr-2 mb-2" id=editor_emphasis><button class="btn dropdown-toggle" type=button id=dropdownMenu3 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words or sentence at textarea" aria-haspopup=true aria-expanded=false><span class=english>Emphasis</span></button><div class=dropdown-menu aria-labelledby=dropdownMenu3><button class=dropdown-item type=button id=strong>Strong</button> <button class=dropdown-item type=button id=moderate>Moderate</button> <button class=dropdown-item type=button id=reduced>Reduced</button></div></div><div class="btn-group mr-2 mb-2"><div class=audiobook-nonslider><button class="btn dropdown-toggle" type=button id=dropdownMenu4 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words or sentence at textarea" aria-haspopup=true aria-expanded=false><span class=english>Speed</span></button><div class=dropdown-menu aria-labelledby=dropdownMenu4><button class=dropdown-item type=button id=x-slow_speed>x-slow</button> <button class=dropdown-item type=button id=slow_speed>Slow</button> <button class=dropdown-item type=button id=medium_speed>Medium</button> <button class=dropdown-item type=button id=fast_speed>Fast</button> <button class=dropdown-item type=button id=x-fast_speed>x-fast</button></div></div><div class=audiobook-sliders><button class="btn dropdown-toggle" type=button id=speed-btn><span class=english>Speed</span></button><div class=speed-dropdown><h6>Speed</h6><input type=text class=form-control id=ion_textarea_speed placeholder=Speed> <button type=button class="btn btn-primary btn-sm mt-3 submit">Submit</button> <button type=button class="btn btn-cancel btn-sm mt-3 cancel">Cancel</button></div></div></div><div class="btn-group mr-2 mb-2" id=editor_pitch><div class=audiobook-nonslider><button class="btn dropdown-toggle" type=button id=dropdownMenu5 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words or sentence at textarea" aria-haspopup=true aria-expanded=false><span class=english>Pitch</span></button><div class=dropdown-menu aria-labelledby=dropdownMenu5><button class=dropdown-item type=button id=x-low_pitch>x-low</button> <button class=dropdown-item type=button id=low_pitch>Low</button> <button class=dropdown-item type=button id=medium_pitch>Medium</button> <button class=dropdown-item type=button id=default_pitch>Default</button> <button class=dropdown-item type=button id=high_pitch>High</button> <button class=dropdown-item type=button id=x-high_pitch>x-High</button></div></div><div class=audiobook-sliders><button class="btn dropdown-toggle" type=button id=pitch-btn><span class=english>Pitch</span></button><div class=pitch-dropdown><h6>Pitch</h6><input type=text class=form-control id=ion_textarea_pitch placeholder=Pitch> <button type=button class="btn btn-primary btn-sm mt-3 submit">Submit</button> <button type=button class="btn btn-cancel btn-sm mt-3 cancel">Cancel</button></div></div></div><div class="btn-group mr-2 mb-2" id=editor_volume><div class=audiobook-nonslider><button class="btn dropdown-toggle" type=button id=dropdownMenu6 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words or sentence at textarea" aria-haspopup=true aria-expanded=false><span class=english>Volume</span></button><div class=dropdown-menu aria-labelledby=dropdownMenu6><button class=dropdown-item type=button id=x-soft>x-soft</button> <button class=dropdown-item type=button id=soft>Soft</button> <button class=dropdown-item type=button id=medium>Medium</button> <button class=dropdown-item type=button id=loud>Loud</button> <button class=dropdown-item type=button id=x-loud>x-Loud</button></div></div><div class=audiobook-sliders><button class="btn btn-secondary dropdown-toggle" id=volume-btn type=button><span class=english>Volume</span></button><div class=volume-dropdown><h6>Volume</h6><input type=text class=form-control id=ion_textarea_volume placeholder=Volume> <button type=button class="btn btn-primary mt-3 submit">Submit</button> <button type=button class="btn btn-cancel mt-3 cancel">Cancel</button></div></div></div><div class="btn-group mr-2 mb-2"><button class="btn dropdown-toggle" type=button id=dropdownMenu7 data-toggle=dropdown data-toggle-second=tooltip data-placement=top title="Tag words at textarea" aria-haspopup=true aria-expanded=false><span class=english>Say as</span></button><div class="dropdown-menu scrollable-menu" aria-labelledby=dropdownMenu7><button class=dropdown-item type=button id=date_ssml>Date</button> <button class=dropdown-item type=button id=time_ssml>Time</button> <button class=dropdown-item type=button id=address>Address</button> <button class=dropdown-item type=button id=telephone>Telephone</button> <button class=dropdown-item type=button id=spell-out>Spell-out</button> <button class=dropdown-item type=button id=expletive>Expletive</button> <button class=dropdown-item type=button id=cardinal>Cardinal</button> <button class=dropdown-item type=button id=ordinal>Ordinal</button> <button class=dropdown-item type=button id=characters>Characters</button> <button class=dropdown-item type=button id=unit_ssml>Unit</button> <button class=dropdown-item type=button id=digits>Digits</button> <button class=dropdown-item type=button id=fraction>Fraction</button></div></div></div><textarea class="form-control input-field" id=main-textarea rows=12 name=main-textarea maxlength=250 placeholder=""></textarea></div><div class="tab-pane fade" id=ssml role=tabpanel aria-labelledby=ssml-tab><textarea class="form-control input-field" id=ssml-main-textarea rows=15 name=ssml-main-textarea maxlength=250 placeholder="<speak>Hello, This is VoiceMaker</speak>"></textarea></div></div></div><div class="text-center pl-2 pr-2 d-none"><p class=jQTAreaExt></p></div><div id=textarea-settings><div class=character-counter><span><em class=jQTAreaCount></em>/<em class=jQTAreaValue></em> characters used</span> <span class=ml-2><a href=# data-toggle=modal data-target=#loginModal class=text-info><i class="fa fa-long-arrow-alt-right" aria-hidden=true></i> Get more characters</a></span></div><div class=clear-button><button type=button id=clear-main-text>Clear Text</button></div><br><div id=not-subscribe-error></div><br><div class=textarea-error></div></div></div><div class=player_top></div><div class="row no-gutters text-center"><div class=col-md-12 id=audio-box-container><span class=text-left id=audio-top-text>Play the Text</span><div id=engine><audio preload=auto controls class=main-player id=main><source src=voices/intro.mp3></audio></div><button id=one type=button data-toggle=tooltip data-placement=top title="Download Speech"><span class="fa fa-download"></span></button></div></div><div class="row no-gutters"><div class=col-md-4 id=languages><h6>AI Engine</h6><div id=engine-radio-group role=radiogroup class=mb-4><div class=radio-control><input class=input-control type=radio name=engine id=standard value=standard><label class=label-control for=standard>Standard TTS <i data-toggle=tooltip data-original-title="Standard TTS AI engine will be retired by the end of 2023."><i class="fa fa-info-circle text-muted"></i></i></label></div><div class=radio-control><input class=input-control type=radio name=engine id=neural value=neural checked><label class=label-control for=neural>Neural TTS <i data-toggle=tooltip data-original-title="Neural TTS produces the most natural and human-like text-to-speech voices possible."><i class="fa fa-info-circle text-muted"></i></i></label></div></div><div class=mb-4><h6>Language and Regions</h6><div id=language-selector-div><select id=language-selector name=language data-callback=change_voice_callback data-placeholder="Choose your Language:"></select></div></div></div><div class=col-md-4 id=voices><h6 class=voices>Voices</h6><div class="custom-spinner voice-radio-spinner"><div class=double-bounce1></div><div class=double-bounce2></div></div><div id=voice-radio-group role=radiogroup></div></div><div class=col-md-4 id=action-buttons><div id=buttons-box><button class="ripple convert-button" type=submit name=convert><i class="fa fa-play"></i>Convert to Speech</button> <button class="ripple download-button download-button-actual"><i class="fa fa-download"></i>Download <span id=download-format>MP3</span> <i data-toggle=tooltip data-original-title="Convert a Text to Speech First"><i class="fa fa-info-circle"></i></i></button><p>Sample Rate: <span id=sample-rate>24000Hz</span></p></div><div id=additional-settings><div id=accordionParent><div class=card><div class=card-header id=headerOne><a data-toggle=collapse data-target=#audio-collapse aria-expanded=false aria-controls=audio-collapse class=collapsed><span class=titles>Audio Settings</span></a></div><div class=collapse id=audio-collapse aria-labelledby=headerOne data-parent=#accordionParent><div id=settings-box class=d-flex><div class="settings mr-auto" id=audio-format><h6>Audio Format</h6><div id=audio-format-group role=radiogroup><div class=radio-control><input class=input-control type=radio name=format id=mp3 value=mp3 checked><label class=label-control for=mp3>MP3</label></div><div class=radio-control><input class=input-control type=radio name=format id=ogg value=ogg_vorbis><label class=label-control for=ogg>OGG</label></div><div class=radio-control><input class=input-control type=radio name=format id=wav value=wav><label class=label-control for=wav>WAV <i data-toggle=tooltip title="WAV (Audio Format) will may take longer time to convert."><div class="fa fa-info-circle"></div></i>&nbsp; <span class="badge badge-danger">P</span></label></div></div></div><div class=settings id=audio-frequency><h6>Sample Rate</h6><div id=audio-frequency-group role=radiogroup><div class=radio-control><input class=input-control type=radio name=frequency id=48000 value=48000 disabled><label class=label-control for=48000>48,000Hz <span class="badge badge-danger">P</span></label></div><div class=radio-control><input class=input-control type=radio name=frequency id=44100 value=44100 disabled><label class=label-control for=44100>44,100Hz <span class="badge badge-danger">P</span></label></div><div class=radio-control><input class=input-control type=radio name=frequency id=24000 value=24000 checked><label class=label-control for=24000>24000Hz</label></div><div class=radio-control><input class=input-control type=radio name=frequency id=22050 value=22050><label class=label-control for=22050>22050Hz</label></div><div class=radio-control><input class=input-control type=radio name=frequency id=16000 value=16000><label class=label-control for=16000>16000Hz</label></div><div class=radio-control><input class=input-control type=radio name=frequency id=8000 value=8000><label class=label-control for=8000>8000Hz</label></div></div></div></div></div></div><div class=card><div class=card-header id=headerTwo><a data-toggle=collapse data-target=#voice-collapse aria-expanded=true aria-controls=voice-collapse class=collapsed><span class=titles>Voice Settings</span></a></div><div class="collapse show" id=voice-collapse aria-labelledby=headerTwo data-parent=#accordionParent><div class="col-md-12 mt-2 mb-2" id=addional_vc><div class=mb-4 id=master-voice-volume><h6>Voice Volume</h6><input type=text class=form-control id=ion_volume name=master_volume placeholder="Voice Volume"></div><div class=mb-45><h6 class=mb-2>Voice Speed</h6><input type=text class=form-control id=ion_speed name=speed placeholder="Voice Speed"></div><div class=mb-2 id=voice-pitch><h6>Voice Pitch</h6><input type=text class=form-control id=ion_pitch name=pitch placeholder="Voice Pitch"></div><div class=clear-button><button type=button data-target=t-basic-vc>Back to Basic</button><button type=button id=ion_clear>Reset</button></div></div><div id=basic-voice-settings style="display: none;" class="col-md-12 mt-2 mb-2"><div id=settings-box class=d-flex><div class="settings mr-auto" id=settings-left><h6>Voice Speed</h6><div class=voice-settings-group role=radiogroup><div class=radio-control><input class=input-control type=radio name=speed id=x-fast value=x-fast><label class=label-control for=x-fast>x-Fast</label></div><div class=radio-control><input class=input-control type=radio name=speed id=fast value=fast><label class=label-control for=fast>Fast</label></div><div class=radio-control><input class=input-control type=radio name=speed id=normal value=normal checked><label class=label-control for=normal>Normal</label></div><div class=radio-control><input class=input-control type=radio name=speed id=slow value=slow><label class=label-control for=slow>Slow</label></div><div class=radio-control><input class=input-control type=radio name=speed id=x-slow value=x-slow><label class=label-control for=x-slow>x-Slow</label></div></div></div><div class=settings id=basic-voice-volume><h6>Voice Volume</h6><div class=voice-settings-group role=radiogroup><div class=radio-control><input class=input-control type=radio name=master_volume id=master_volume_x-soft value=x-soft><label class=label-control for=master_volume_x-soft>x-Soft</label></div><div class=radio-control><input class=input-control type=radio name=master_volume id=master_volume_soft value=soft><label class=label-control for=master_volume_soft>Soft</label></div><div class=radio-control><input class=input-control type=radio name=master_volume id=master_volume_medium value=medium checked><label class=label-control for=master_volume_medium>Medium</label></div><div class=radio-control><input class=input-control type=radio name=master_volume id=master_volume_loud value=loud><label class=label-control for=master_volume_loud>Loud</label></div><div class=radio-control><input class=input-control type=radio name=master_volume id=master_volume_x-loud value=x-loud><label class=label-control for=master_volume_x-loud>x-Loud</label></div></div></div></div><div id=settings-box class=pt-2><div class=settings id=settings-left><h6>Voice Pitch <i data-toggle=tooltip title="Supported only by Standard TTS (AI Engine)"><div class="fa fa-info-circle"></div></i></h6><div class=voice-settings-group role=radiogroup><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_x-low value=pitch_x-low><label class=label-control for=pitch_x-low>x-low</label></div><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_low value=pitch_low><label class=label-control for=pitch_low>Low</label></div><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_medium value=pitch_medium><label class=label-control for=pitch_medium>Medium</label></div><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_default value=pitch_default checked><label class=label-control for=pitch_default>Default</label></div><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_high value=pitch_high><label class=label-control for=pitch_high>High</label></div><div class=radio-control><input class=input-control type=radio name=pitch id=pitch_x-high value=pitch_x-high><label class=label-control for=pitch_x-high>x-High</label></div></div></div></div><div class=clear-button><button type=button data-target=t-advanced-vc>Back to Advanced</button></div></div></div></div><div class=card><div class=card-header id=headerTwo><a data-toggle=collapse data-target=#effect-collapse aria-expanded=false aria-controls=effect-collapse class=collapsed><span class="flex-center titles">Voice Effects <span class="badge badge-black ml-1">E</span> <i data-toggle=tooltip data-html=true data-original-title="Voice Effects are only available for selected voices. Check <span class='badge badge-black'>E</span> sign near voice name."><i class="ml-1 text-muted fa fa-info-circle"></i></i></span></a></div><div class=collapse id=effect-collapse aria-labelledby=headerTwo data-parent=#accordionParent><div id=settings-box><div class=settings><h6>Voice Effect</h6><div class=voice-settings-group role=radiogroup><div class="d-flex bd-highlight mb-3"><div class="mr-auto bd-highlight"><div class=radio-control><input class=input-control type=radio name=effect id=default value=default checked><label class=label-control for=default>Default</label></div><div class=radio-control><input class=input-control type=radio name=effect id=breathing value=breathing><label class=label-control for=breathing>Breathing <i data-toggle=tooltip data-original-title="Supports only on Standard TTS and Free Voices."><i class="fa fa-info-circle"></i></i></label></div><div class=radio-control><input class=input-control type=radio name=effect id=softer value=soft><label class=label-control for=softer>Soft <i data-toggle=tooltip data-original-title="Supports only on Standard TTS and Free Voices."><i class="fa fa-info-circle"></i></i></label></div><div class=radio-control><input class=input-control type=radio name=effect id=whispered value=whispered><label class=label-control for=whispered>Whispered <i data-toggle=tooltip data-original-title="Supports only on Standard TTS and Free Voices."><i class="fa fa-info-circle"></i></i></label></div><div class=radio-control><input class=input-control type=radio name=effect id=conversational value=conversational disabled><label class=label-control for=conversational>Conversational</label></div><div class=radio-control><input class=input-control type=radio name=effect id=news value=news disabled><label class=label-control for=news>Newscaster</label></div><div class=radio-control><input class=input-control type=radio name=effect id=drc value=drc><label class=label-control for=drc>DRC <i data-toggle=tooltip title="Dynamic Range Compression (Audio Normalize) **"><div class="fa fa-info-circle"></div></i></label></div><div class=radio-control><input class=input-control type=radio name=effect id=customersupport value=customersupport disabled><label class=label-control for=customersupport>Customer Support</label></div><div class=radio-control><input class=input-control type=radio name=effect id=assistant value=assistant disabled><label class=label-control for=assistant>Digital Assistant</label></div><div class=radio-control><input class=input-control type=radio name=effect id=narration value=narration disabled><label class=label-control for=narration>Narration</label></div><div class=radio-control><input class=input-control type=radio name=effect id=happy value=happy disabled><label class=label-control for=happy>Happy</label></div><div class=radio-control><input class=input-control type=radio name=effect id=sad value=sad disabled><label class=label-control for=sad>Sad</label></div></div><div class="mr-auto bd-highlight"><div class=radio-control><input class=input-control type=radio name=effect id=angry value=angry disabled><label class=label-control for=angry>Angry</label></div><div class=radio-control><input class=input-control type=radio name=effect id=empathic value=empathic disabled><label class=label-control for=empathic>Empathic</label></div><div class=radio-control><input class=input-control type=radio name=effect id=calm value=calm disabled><label class=label-control for=calm>Calm</label></div><div class=radio-control><input class=input-control type=radio name=effect id=excited value=excited disabled><label class=label-control for=excited>Excited</label></div><div class=radio-control><input class=input-control type=radio name=effect id=friendly value=friendly disabled><label class=label-control for=friendly>Friendly</label></div><div class=radio-control><input class=input-control type=radio name=effect id=hopeful value=hopeful disabled><label class=label-control for=hopeful>Hopeful</label></div><div class=radio-control><input class=input-control type=radio name=effect id=shouting value=shouting disabled><label class=label-control for=shouting>Shouting</label></div><div class=radio-control><input class=input-control type=radio name=effect id=feared value=feared disabled><label class=label-control for=feared>Feared</label></div><div class=radio-control><input class=input-control type=radio name=effect id=terrified value=terrified disabled><label class=label-control for=terrified>Terrified</label></div><div class=radio-control><input class=input-control type=radio name=effect id=unfriendly value=unfriendly disabled><label class=label-control for=unfriendly>Unfriendly</label></div><div class=radio-control><input class=input-control type=radio name=effect id=serious value=serious disabled><label class=label-control for=serious>Serious</label></div></div></div></div></div></div></div></div></div></div></div></div><div class="row d-flex justify-content-center mt-2"><div class=col-12><hr class=mb-4><div class="homepage-coming-soon pl-3 pr-3"><span>Coming soon:</span><br><p>Pronunciation Editor, Payment Auto-pay feature and 50+ fresh new AI voices.</p></div></div></div></form></div></div></div><section class=brands><div class=container><div class=section_con><h1 class="title section_main_title">Trusted by 1000+ well-known brands</h1><div class=trusted-l><div class="d-flex justify-content-center align-items-center trusted-l-space"><div class=trusted-l-grid><img src=images/brands/1.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/2.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/3.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/4.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/13.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/6.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/7.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/8.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/9.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/10.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/11.svg alt=""></div><div class=trusted-l-grid><img src=images/brands/12.svg alt=""></div></div></div></div></div></section><section class="audio-creation section_con"><div class=container><h1 class="title section_main_title">Create audio files for your commercial use</h1><p class=caption>Voicemaker allows you to redistribute your generated audio files even after your subscription expires.</p><div class=row><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_1.png alt=""><h4>Audiobooks & Podcast</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_3.png alt=""><h4>Youtube videos</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_5.png alt=""><h4>E-learning material</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_7.png alt=""><h4>Sales & Social media videos</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_2.png alt=""><h4>Public use and brodcasting</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_4.png alt=""><h4>Web & Mobile Application</h4></div></div><div class="col-xl-4 col-md-6"><div class="btn parent"><img src=images/audio-creation_6.png alt=""><h4>Call Centers & IVR System</h4></div></div><div class="col-xl-4 col-md-6"></div><div class="col-xl-4 col-md-6"><a href=pricing.html class="btn parent view-parent"><h4>View Plans &gt;</h4></a></div></div></div></section><section class=audio-sharing><div class=container><div class=section_con><h1 class="title section_main_title">Share audio across multiple platforms</h1><p class=caption>The converted audio files can be shared worldwide on any platform.</p><div class=channels-l><div class="d-flex justify-content-center align-items-center channels-l-space"><div class=channels-l-grid><img src=images/sharing-1.svg alt=""></div><div class=channels-l-grid><img src=images/sharing-2.svg alt=""></div><div class=channels-l-grid><img src=images/sharing-3.svg alt=""></div><div class=channels-l-grid><img src=images/sharing-4.svg alt=""></div><div class=channels-l-grid><img src=images/sharing-5.svg alt=""></div><div class=channels-l-grid><img src=images/sharing-6.svg alt=""></div></div></div></div></div></section><section class="about section_con"><div class=container><h1 class="title section_main_title">Industry-leading features that help us grow fast</h1><div class=col-md-12><div class="row parent align-items-center"><div class="col-md-4 col-12"><h1>100M +</h1><p>Text characters are converted into voiceovers every day.</p></div><div class="col-md-4 col-12"><h1>400K +</h1><p>Users in over 120 countries worldwide.</p></div><div class="col-md-4 col-12 text-center"><h2>Discover how voiceover transform words into human-sounding voices.</h2><a href=index.html class="btn parent view-parent">Start creating &gt;</a></div></div></div></div></section></section><script>$(function () {
+		$('.nav-tabs a').on('click', function (e) {
+			e.preventDefault();
+
+			if ($(this).attr('href') == '#ssml') {
+				$('#additional-settings').hide();
+			}
+			else {
+				$('#additional-settings').show();
+			}
+			$(this).tab('show');
+		});
+	});
+    $(function() {
+      const showAlert = localStorage.getItem("alert") === null;
+      $(".alert").toggleClass("d-none",!showAlert)
+      $(".close").on("click",function() {
+        localStorage.setItem("alert","seen");
+        $(this).closest(".alert").addClass("d-none")
+      });
+    })</script><style type=text/css>.shadow-custom {
+        box-shadow:  none;
+    }
+    .navbar {
+        border: 0;
+        background: #f7f7f7;
+    }
+    .dark .navbar {
+        background:  #121212;
+        border-bottom: 0px solid #121212;
+    }
+    @media only screen and (max-width: 991px) {
+        .navbar-collapse {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }</style><footer class="footer section_con"><div class=container><div class=footer-con><div class=row><div class="col-md-6 col-sm-12"><a class="logo mb-4 footer-logo" href=#><img src=img/logo_footer.svg alt=""></a></div><div class=col-md-6><div class=row><div class="col-md-4 col-6 links"><ul><li><a href=https://developer.voicemaker.in/ target=_blank>Developer API</a></li><li><a href=changelog.html>Changelog <span data-toggle=tooltip data-original-title="August 21th, 2022"><span class="badge badge-success mr-1">v1.0.17</span></span></a></li><li><a rel=noreferrer href=https://status.voicemaker.in/ target=_blank>System Status</a></li></ul></div><div class="col-md-4 col-6 links"><ul><li><a href=https://help.voicemaker.in/how-to-use-voicemaker/ target=_blank>How to Use?</a></li><li><a href=https://help.voicemaker.in/ target=_blank>Help Center</a></li><li><a href=faq.html>FAQ</a></li></ul></div><div class="col-md-4 col-6 links"><ul><li><a href=contact.html>Contact Us</a></li><li><a href=privacy.html>Privacy Policy</a></li><li><a href=terms.html>Terms of Service</a></li></ul></div></div></div></div><div class=row><div class=col-md-12><div class="copyright-area mb-2"><div class=d-flex><div class=mr-auto>Page Role Media Pvt Ltd. All rights reserved, 2022.</div><div><span class=mr-1><a target=_blank rel=noreferrer href=https://www.facebook.com/voicemaker.in><span class="our-icon fab fa-facebook-f"></span></a> <a target=_blank rel=noreferrer href=https://twitter.com/voicemaker_in><span class="our-icon fab fa-twitter ml-2"></span></a> <a target=_blank rel=noreferrer href=https://www.linkedin.com/company/voicemakerin><span class="our-icon fab fa-linkedin-in ml-2"></span></a> <a target=_blank rel=noreferrer href=https://instagram.com/voicemaker.in><span class="our-icon fab fa-instagram ml-2"></span></a></span></div></div></div></div></div></div></div></footer><link rel=stylesheet href=css/fontawesome/css/all.min6473.css?v23 media=print onload='this.media="all"'><script src=js/audioplayer.min4b6d.js?v5></script><script src=js/popper.min6473.js?v23></script><script src=js/bootstrap.min.js></script><script src=js/undoRedo.js></script><script src=js/mixed.js></script><script src=js/custom.fulld591.js?v65></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"74d02f1fdbba2776","token":"61adb3f7673741d392fff4dbb7befb7f","version":"2022.8.1","si":100}' crossorigin="anonymous"></script>
+</body></html>

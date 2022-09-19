@@ -1,0 +1,14 @@
+HTTrack3.49-2+htsswf+htsjava launched on Mon, 19 Sep 2022 03:14:56 at https://voicemaker.in/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +https://voicemaker.in/
+(winhttrack -qwC2%P%s%uN0%I0H0%kf2A25000%f#f -F  -%F  -%l "pt_BR, en, *" -%X https://voicemaker.in/ https://voicemaker.in/ -O1 "C:\Users\NetMil\Desktop\site-me\z" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.mov +*.mpg +*.mpeg +*.avi +*.asf +*.mp3 +*.mp2 +*.rm +*.wav +*.vob +*.qt +*.vid +*.ac3 +*.wma +*.wmv +https://voicemaker.in/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+03:17:06	Error: 	"Not Found" (404) at link https://voicemaker.in/GET (from https://voicemaker.in/)
+03:17:31	Warning: 	Link https://voicemaker.in/cdn-cgi/l/email-protection not scanned (follow robots meta tag)
+03:17:31	Error: 	"Not Found" (404) at link https://voicemaker.in/images/brands/AJAX.svg (from https://voicemaker.in/images/brands/9.svg)
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 36 seconds : 606 links scanned, 603 files written (10165481 bytes overall) [4125780 bytes received at 26447 bytes/sec], 9706891 bytes transferred using HTTP compression in 586 files, ratio 31%, 164.2 requests per connection
+(2 errors, 1 warnings, 0 messages)
